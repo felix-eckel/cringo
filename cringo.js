@@ -19,7 +19,7 @@ const sins = [
     "Default Colors",
     "An entire data table",
     "A slide with only “Thank you for your attention”",
-    "A screenshots of a paper",
+    "A screenshot of a paper",
     "A graph with tiny labels",
     "Full references",
     "A figures, that is never talked about",
@@ -84,6 +84,8 @@ function initialize() {
             field.children[i].classList.add('unselectEntry');
         }
     }
+
+    document.getElementById("field").style.boxShadow = 'none';
 }
 
 /**
@@ -132,6 +134,7 @@ function checkBingo() {
 
         if (rowBingo || colBingo || ascBingo || descBingo) {
             document.getElementById("win").style.display = 'revert';
+            document.getElementById("field").style.boxShadow = '0 0 10px 5px green';
         }
     }
 }
