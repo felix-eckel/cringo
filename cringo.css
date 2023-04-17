@@ -5,10 +5,10 @@ h1, h2 {
 
 .field {
     display: grid;
-    grid-template-columns: min(19vh, 19vw) min(19vh, 19vw) min(19vh, 19vw) min(19vh, 19vw) min(19vh, 19vw);
+    grid-template-columns: min(14vh, 19vw) min(14vh, 19vw) min(14vh, 19vw) min(14vh, 19vw) min(14vh, 19vw);
     margin-left: auto;
     margin-right: auto;
-    width: min(95vw, 95vh);
+    width: min(95vw, 70vh);
     border: 1px black solid;
     border-radius: 10pt;
     background: black
@@ -20,7 +20,7 @@ h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: min(2vh, 2vw);
+    font-size: min(1.5vh, 2vw);
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -58,6 +58,7 @@ h1, h2 {
     float: right;
     font-size: 32px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #title {
@@ -67,13 +68,22 @@ h1, h2 {
 }
 
 #bingo {
-    width: 250px;
+    width: 67vw;
     padding: 5px 12px;
     margin: auto;
     text-align: center;
     background-color: green;
     border-radius: 20px;
     margin-top: 33vh;
+}
+
+#bingo h1 {
+    font-size: 700%;
+}
+
+#bingo h3 {
+    font-size: 250%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #bingo div {
@@ -87,6 +97,7 @@ h1, h2 {
     padding: 5pt;
     cursor: pointer;
     margin-top: 20pt;
+    font-size: min(3vw, 3vh);
 }
 
 #reset p {
