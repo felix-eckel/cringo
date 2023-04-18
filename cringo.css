@@ -1,6 +1,9 @@
-h1, h2 {
-    font-family: sans-serif;
-    font-weight: normal;
+.classic {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ugly {
+    font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", "Chalkboard SE", cursive;
 }
 
 .field {
@@ -27,7 +30,6 @@ h1, h2 {
     -webkit-user-select: none;
     -moz-user-select: none;
     color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2pt;
 }
 
@@ -61,37 +63,7 @@ h1, h2 {
     cursor: pointer;
 }
 
-#title {
-    margin: auto;
-    width: max-content;
-    text-align: center;
-}
-
-#bingo {
-    width: 67vw;
-    padding: 5px 12px;
-    margin: auto;
-    text-align: center;
-    background-color: green;
-    border-radius: 20px;
-    margin-top: 33vh;
-    color: white;
-}
-
-#bingo h1 {
-    font-size: 700%;
-}
-
-#bingo h3 {
-    font-size: 250%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#bingo div {
-    cursor: pointer;
-}
-
-#reset {
+.options-btn {
     border: solid;
     border-width: 1pt;
     width: min-content;
@@ -100,10 +72,64 @@ h1, h2 {
     margin-top: 20pt;
     font-size: min(3vw, 3vh);
     border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
-#reset p {
+.options-btn p {
     margin: 0;
+}
+
+.options-btn:hover {
+    background-color: #f0f0f0;
+    transition: .5s;
+    box-shadow: #c0c0c0 0 0 5px 2px;
+}
+
+#title {
+    margin: auto;
+    width: max-content;
+    text-align: center;
+}
+
+#bingo,
+#options-panel {
+    padding: 5px 12px;
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 33vh;
+    color: white;
+}
+
+#bingo {
+    width: 67vw;
+    text-align: center;
+    background-color: green;
+}
+
+#options-panel {
+    width: 67vw;
+    text-align: left;
+    background-color: #404040;
+    font-size: min(4vh, 4vw);
+    padding-bottom: 50px;
+}
+
+#options-modal h1 {
+    text-align: center;
+}
+
+#bingo h1 {
+    font-size: 700%;
+}
+
+#bingo h3 {
+    font-size: 250%;
+}
+
+#bingo div {
+    cursor: pointer;
 }
 
 #e01 {
@@ -120,4 +146,17 @@ h1, h2 {
 
 #e25 {
     border-radius: 0 0 10pt 0;
+}
+
+#controls {
+    display: flex;
+}
+
+#options-spacer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#app-nice-label {
+    color: #a0a0a0;
 }

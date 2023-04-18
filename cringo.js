@@ -39,6 +39,9 @@ const field = document.getElementById("field");
 document.getElementById("win").style.display = 'none';
 initialize();
 
+/** appearance status, 0: nice (not available), 1: classic, 2: ugly */
+var appearance = 1;
+
 /** Add click functionality to entries */
 for (e of field.children) {
     e.addEventListener("click", function(){selectEntry.call(this);});
@@ -63,6 +66,25 @@ document.getElementById("continue").addEventListener("click", function(){
 document.getElementById("reset").addEventListener("click", function(){
     closeWin();
     initialize();
+})
+
+/** Add appearance options logic */
+document.getElementById("options").addEventListener("click", function(){
+    document.getElementById("options-modal").style.display = 'revert';
+})
+
+document.getElementById("options-panel").getElementsByClassName("close")[0].addEventListener("click", function(){
+    closeOptions();
+})
+
+document.getElementById("app-classic").checked = true;
+document.getElementById("app-classic").addEventListener("change", function() {
+    appearance = 1;
+    changeAppearance(appearance);
+})
+document.getElementById("app-ugly").addEventListener("change", function() {
+    appearance = 2;
+    changeAppearance(appearance);
 })
 
 /**
@@ -143,6 +165,10 @@ function closeWin() {
     document.getElementById("win").style.display = 'none';
 }
 
+function closeOptions() {
+    document.getElementById("options-modal").style.display = 'none';
+}
+
 function continuePlaying() {
     won = true;
 }
@@ -159,4 +185,34 @@ function shuffleArray(arr) {
     }
 
     return arr.slice(0, 25);
+}
+
+/**
+ * Change the appearance of the bingo
+ */
+function changeAppearance(app) {
+    const ids = ["field", "title", "win"]
+    if (app == 1) {
+        for (const i in ids) {
+            console.log(ids[i])
+            document.getElementById(ids[i]).classList.remove("ugly")
+            document.getElementById(ids[i]).classList.add("classic")
+        }
+        for (let i=0; i<field.children.length; i++) {
+            field.children[i].style.color = 'white';
+        }
+    } else if (app == 2) {
+        for (const i in ids) {
+            document.getElementById(ids[i]).classList.remove("classic")
+            document.getElementById(ids[i]).classList.add("ugly")
+        }
+
+        for (let i=0; i<field.children.length; i++) {
+            r = String(Math.round(Math.random()) * 255);
+            g = String(Math.round(Math.random()) * 255);
+            b = String(Math.round(Math.random()) * 255);
+            field.children[i].style.color = "rgb(" + r + ", " + g + ", " + b + ")"
+        }
+    }
+    
 }
