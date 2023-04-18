@@ -34,7 +34,7 @@
 }
 
 .selectEntry {
-    background-color: red;
+    background-color: maroon;
 }
 
 .unselectEntry {
@@ -79,6 +79,7 @@
 
 .options-btn p {
     margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .options-btn:hover {
@@ -98,7 +99,7 @@
     padding: 5px 12px;
     margin: auto;
     border-radius: 20px;
-    margin-top: 33vh;
+    margin-top: min(20vw, 20vh);
     color: white;
 }
 
@@ -114,18 +115,30 @@
     background-color: #404040;
     font-size: min(4vh, 4vw);
     padding-bottom: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #options-modal h1 {
     text-align: center;
 }
 
+#options-radio input,
+#options-radio label {
+    cursor: pointer;
+}
+
+#options-radio label {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
 #bingo h1 {
-    font-size: 700%;
+    font-size: min(10vw, 14vh);
 }
 
 #bingo h3 {
-    font-size: 250%;
+    font-size: min(4vw, 6vh);
 }
 
 #bingo div {

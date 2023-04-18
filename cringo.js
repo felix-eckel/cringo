@@ -22,7 +22,7 @@ const sins = [
     "A screenshot of a paper",
     "A graph with tiny labels",
     "Full references",
-    "A figures, that is never talked about",
+    "A figure, that is never talked about",
     "An over-the-top slide change or  animation",
     "Suddenly talking faster, when the convener reminds you of the time",
     "Skipping slides because of bad time management",
@@ -68,6 +68,13 @@ document.getElementById("reset").addEventListener("click", function(){
     initialize();
 })
 
+document.getElementById("win").onclick = function(e) {
+    if(e.target == document.getElementById("win")) {
+        closeWin();
+        continuePlaying();
+    }
+}
+
 /** Add appearance options logic */
 document.getElementById("options").addEventListener("click", function(){
     document.getElementById("options-modal").style.display = 'revert';
@@ -76,6 +83,12 @@ document.getElementById("options").addEventListener("click", function(){
 document.getElementById("options-panel").getElementsByClassName("close")[0].addEventListener("click", function(){
     closeOptions();
 })
+
+document.getElementById("options-modal").onclick = function(e) {
+    if(e.target == document.getElementById("options-modal")) {
+        closeOptions();
+    }
+}
 
 document.getElementById("app-classic").checked = true;
 document.getElementById("app-classic").addEventListener("change", function() {
@@ -194,12 +207,17 @@ function changeAppearance(app) {
     const ids = ["field", "title", "win"]
     if (app == 1) {
         for (const i in ids) {
-            console.log(ids[i])
             document.getElementById(ids[i]).classList.remove("ugly")
             document.getElementById(ids[i]).classList.add("classic")
         }
+
         for (let i=0; i<field.children.length; i++) {
             field.children[i].style.color = 'white';
+        }
+
+        var title_letters = Array.from(document.querySelectorAll("#title h1 span"))
+        for (const ti in title_letters) {
+            title_letters[ti].style.color = "";
         }
     } else if (app == 2) {
         for (const i in ids) {
@@ -211,7 +229,20 @@ function changeAppearance(app) {
             r = String(Math.round(Math.random()) * 255);
             g = String(Math.round(Math.random()) * 255);
             b = String(Math.round(Math.random()) * 255);
-            field.children[i].style.color = "rgb(" + r + ", " + g + ", " + b + ")"
+            field.children[i].style.color = `rgb(${r}, ${g}, ${b})`;
+        }
+
+        var title_letters = Array.from(document.querySelectorAll("#title h1 span"))
+        for (const ti in title_letters) {
+            while (true) {
+                var r = String(Math.round(Math.random()) * 255);
+                var g = String(Math.round(Math.random()) * 255);
+                var b = String(Math.round(Math.random()) * 255);
+                if (! ((r == g) && (r == b))) {
+                    break
+                }
+            }
+            title_letters[ti].style.color = `rgb(${r}, ${g}, ${b})`;
         }
     }
     
