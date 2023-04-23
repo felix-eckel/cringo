@@ -95,7 +95,8 @@
 }
 
 #bingo,
-#options-panel {
+#options-panel,
+#about-panel {
     padding: 5px 12px;
     margin: auto;
     border-radius: 20px;
@@ -109,7 +110,8 @@
     background-color: green;
 }
 
-#options-panel {
+#options-panel,
+#about-panel {
     width: 67vw;
     text-align: left;
     background-color: #404040;
@@ -118,7 +120,8 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#options-modal h1 {
+#options-modal h1,
+#about-modal h1 {
     text-align: center;
 }
 
@@ -172,4 +175,25 @@
 
 #app-nice-label {
     color: #a0a0a0;
+}
+
+#about-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: black solid;
+    border-width: 2px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#about-btn h3 {
+    font-family: sans-serif;
+    margin: 0px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }

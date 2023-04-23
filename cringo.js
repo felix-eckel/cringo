@@ -22,9 +22,9 @@ const sins = [
     "A screenshot of a paper",
     "A graph with tiny labels",
     "Full references",
-    "A figure, that is never talked about",
-    "An over-the-top slide change or  animation",
-    "Suddenly talking faster, when the convener reminds you of the time",
+    "A figure that is never talked about",
+    "An over-the-top slide change or animation",
+    "Suddenly talking faster when the convener reminds you of the time",
     "Skipping slides because of bad time management",
     "Neon colors for highlighting",
     "“Now I’ll switch to the next slide”",
@@ -99,6 +99,21 @@ document.getElementById("app-ugly").addEventListener("change", function() {
     appearance = 2;
     changeAppearance(appearance);
 })
+
+/** Add About logic */
+document.getElementById("about-btn").addEventListener("click", function(){
+    document.getElementById("about-modal").style.display = "revert";
+})
+
+document.getElementById("about-panel").getElementsByClassName("close")[0].addEventListener("click", function(){
+    closeAbout();
+})
+
+document.getElementById("about-modal").onclick = function(e) {
+    if (e.target == document.getElementById("about-modal")) {
+        closeAbout();
+    }
+}
 
 /**
  * Initialize a new game
@@ -180,6 +195,10 @@ function closeWin() {
 
 function closeOptions() {
     document.getElementById("options-modal").style.display = 'none';
+}
+
+function closeAbout() {
+    document.getElementById("about-modal").style.display = 'none';
 }
 
 function continuePlaying() {
