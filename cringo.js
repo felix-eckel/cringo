@@ -164,20 +164,22 @@ function initialize() {
  */
 function selectEntry() {
     var item = Number(this.id.substring(1,3)) - 1;
-    var row  = Math.floor(item / 5);
-    var col  = item % 5;
-    matrix[row][col] = !matrix[row][col];
-    selected = matrix[row][col];
+    if (item != jokerField-1) {
+        var row  = Math.floor(item / 5);
+        var col  = item % 5;
+        matrix[row][col] = !matrix[row][col];
+        selected = matrix[row][col];
 
-    if (selected) {
-        this.classList.add('selectEntry');
-        this.classList.remove('unselectEntry');
-    } else {
-        this.classList.add('unselectEntry');
-        this.classList.remove('selectEntry');
+        if (selected) {
+            this.classList.add('selectEntry');
+            this.classList.remove('unselectEntry');
+        } else {
+            this.classList.add('unselectEntry');
+            this.classList.remove('selectEntry');
+        }
+        
+        checkBingo();
     }
-    
-    checkBingo();
 }
 
 /**
