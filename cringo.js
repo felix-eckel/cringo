@@ -35,6 +35,9 @@ const sins = [
 
 var matrix;
 var won = false;
+var jokerField = 0;
+var jokerReplacement = "";
+var jokerReplacementStatus = false;
 const field = document.getElementById("field");
 document.getElementById("win").style.display = 'none';
 initialize();
@@ -100,6 +103,20 @@ document.getElementById("app-ugly").addEventListener("change", function() {
     changeAppearance(appearance);
 })
 
+document.getElementById("no-joker").checked = true;
+document.getElementById("no-joker").addEventListener("change", function() {
+    joker = 0;
+    jokerMode(joker);
+})
+document.getElementById("joker").addEventListener("change", function() {
+    joker = 1;
+    jokerMode(joker);
+})
+document.getElementById("rdm-joker").addEventListener("change", function() {
+    joker = 2;
+    jokerMode(joker);
+})
+
 /** Add About logic */
 document.getElementById("about-btn").addEventListener("click", function(){
     document.getElementById("about-modal").style.display = "revert";
@@ -133,6 +150,10 @@ function initialize() {
         if (!field.children[i].classList.contains('unselectEntry')) {
             field.children[i].classList.add('unselectEntry');
         }
+    }
+
+    if (jokerField > 0) {
+        makeJoker(jokerField);
     }
 
     document.getElementById("field").style.boxShadow = 'none';
@@ -263,6 +284,68 @@ function changeAppearance(app) {
             }
             title_letters[ti].style.color = `rgb(${r}, ${g}, ${b})`;
         }
+    }    
+}
+
+/** Joker mode */
+function jokerMode(joker) {
+    if (joker == 0) {
+        removeJoker();
+
+    } else if (joker == 1) {
+        removeJoker();
+        makeJoker(13);
+
+    } else if (joker == 2) {
+        removeJoker();
+        var randomField = Math.round((Math.random() * 24) + 1)
+        makeJoker(randomField);
+        
+        
     }
+}
+
+function removeJoker() {
+    if (jokerField > 0) {
+        var row  = Math.floor((jokerField-1) / 5);
+        var col  = (jokerField-1) % 5;
+        var item = document.getElementById(field2id(jokerField));
+        if (!jokerReplacementStatus) {
+            matrix[row][col] = false;
+            item.classList.add('unselectEntry');
+            item.classList.remove('selectEntry');
+        }
+        item.textContent = jokerReplacement;
+        jokerField = 0;
+        jokerReplacement = "";
+        jokerReplacementStatus = false;
+    }
+}
+
+function makeJoker(fieldNumber) {
+    jokerField = fieldNumber;
+    var fieldId = field2id(fieldNumber);
+
+    var row  = Math.floor((fieldNumber-1) / 5);
+    var col  = (fieldNumber-1) % 5;
     
+    var item = document.getElementById(fieldId)
+    jokerReplacement = item.textContent;
+    jokerReplacementStatus = matrix[row][col];
+
+    matrix[row][col] = true;
+    item.textContent = "BINGO";
+    item.classList.add('selectEntry');
+    item.classList.remove('unselectEntry');
+    
+    checkBingo();
+}
+
+function field2id(fieldNumber) {
+    if (fieldNumber < 10) {
+        var fieldId = ("e0" + String(fieldNumber));
+    } else {
+        var fieldId = ("e" + String(fieldNumber));
+    }
+    return fieldId;
 }

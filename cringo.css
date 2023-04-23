@@ -82,7 +82,8 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.options-btn:hover {
+.options-btn:hover,
+#about-btn:hover {
     background-color: #f0f0f0;
     transition: .5s;
     box-shadow: #c0c0c0 0 0 5px 2px;
@@ -100,8 +101,16 @@
     padding: 5px 12px;
     margin: auto;
     border-radius: 20px;
-    margin-top: min(20vw, 20vh);
     color: white;
+}
+
+#options-panel {
+    margin-top: min(14vw, 14vh);
+}
+
+#bingo,
+#about-panel {
+    margin-top: min(20vw, 20vh);
 }
 
 #bingo {
@@ -125,12 +134,20 @@
     text-align: center;
 }
 
+#options-modal h3 {
+    font-size: min(3vh, 3vw);
+    margin-bottom: 0;
+}
+
 #options-radio input,
-#options-radio label {
+#options-radio label,
+#joker-radio input, 
+#joker-radio label {
     cursor: pointer;
 }
 
-#options-radio label {
+#options-radio label,
+#joker-radio label {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
